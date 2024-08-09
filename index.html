@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar">
+<style>
+body{background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-size:100%
+    
+}
+</style>
+<body>ًٌ</body>
+<head>
+ <body background="FroxnD.png"></body>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    
+    <title>حساب نسبة التسكين</title>
+<body>
+    <h1>حاسبة معدل التسكين </h1>
+
+    <!-- نموذج حساب نسبة التسكين -->
+    <form id="calcForm">
+        <label for="gpa">المعدل الجامعي:</label>
+        <input type="number" id="gpa" step="0.01" min="0" required>
+        <br>
+        <label for="weighted">النسبة الموزونة:</label>
+        <input type="number" id="weighted" step="0.01" min="0" required>
+        <br>
+        <button type="button" onclick="calculate()">احسب</button>
+    </form>
+    
+    <p id="result"></p>
+
+    <script>
+        function calculate() {
+            // الحصول على القيم من المدخلات
+            var gpa = parseFloat(document.getElementById('gpa').value);
+            var weighted = parseFloat(document.getElementById('weighted').value);
+
+            // حساب معدل التخصيص
+            var allocationRate = (gpa * 0.55) + (weighted * 0.018);
+
+            // عرض النتيجة بناءً على معدل التخصيص
+            var resultElement = document.getElementById('result');
+            var message = `معدل تخصيصك = ${allocationRate.toFixed(2)}<br>`;
+
+            if (allocationRate >= 3.75) {
+                message += 'يؤهلك إلى التنافس في تخصص الطب و الجراحة و بقية التخصصات';
+            } 
+         else if (allocationRate >= 3.50) {
+                message += 'يؤهلك الى التنافس جميع التخصصات عدى الطب و الجراحة';
+            }
+         else if (allocationRate >= 3) {
+                message += 'يؤهلك الى التنافس في جميع التخصصات عدى الطب البشري و طب الاسنان';
+            } else {
+                message += 'لا يؤهلك لأي من التخصصات المحددة';
+            }
+
+            resultElement.innerHTML = message;
+        }
+    </script>
+</body>
+</html>
